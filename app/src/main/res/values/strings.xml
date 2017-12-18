@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TournamentOfChampions</string>
+    <string name="start_button">TO BATTLE!!</string>
+    <string name="hunter_button">Hunter</string>
+    <string name="cleric_button">Cleric</string>
+    <string name="warlock_button">Warlock</string>
+    <string name="fighter_button">Fighter</string>
+    <string name="monk_button">Monk</string>
+    <string name="lockin_button">GO</string>
+</resources>
