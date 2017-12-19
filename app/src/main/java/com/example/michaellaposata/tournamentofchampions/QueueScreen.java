@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,5 +25,9 @@ public class QueueScreen extends AppCompatActivity {
         disp.setImageResource(roleIm);
         TextView text = findViewById(R.id.lockedRoleText);
         text.setText("You are the "+ role);
+    }
+    public void begin(View view) {
+        Intent intent = new Intent(this, Board.class);
+        startActivity(intent);
     }
 }

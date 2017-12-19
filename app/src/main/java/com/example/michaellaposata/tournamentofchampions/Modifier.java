@@ -5,8 +5,9 @@ package com.example.michaellaposata.tournamentofchampions;
  */
 
 public interface Modifier {
-    boolean hasExpired();
-    void effect();
+    boolean hasExpired(Champion c);
+    int effect();
     boolean effectsDamage();
     boolean effectsMove();
+    boolean effectsCost();
 }
