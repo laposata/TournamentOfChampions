@@ -72,8 +72,104 @@ public class Map {
         for(Tile t: layer) {
             tiles.add(t);
         }
-
-
+        layer = new Tile[24];
+        layer[0] = new RockTile(0,4);
+        layer[1] = new Tile(1,3);
+        layer[2] = new ArmoryTile(2,2);
+        layer[3] = new Tile(3,1);
+        layer[4] = new RockTile(4,0);
+        layer[5] = new Tile(4,-1);
+        layer[6] = new Tile(4, -2);
+        layer[7] = new Tile(4, -3);
+        layer[8] = new RockTile(4, -4);
+        layer[9] = new Tile(3, -4);
+        layer[10] = new HillTile(2, -4);
+        layer[11] = new Tile(1,-4);
+        layer[12] = new RockTile(0, -4);
+        layer[13] = new Tile(-1, -3);
+        layer[14] = new Tile(-2, -2);
+        layer[15] = new PotionShopTile(-3, -1);
+        layer[16] = new RockTile(-4, 0);
+        layer[17] = new Tile(-4, 1);
+        layer[18] = new Tile(-4, 2);
+        layer[19] = new AcidTile(-4, 3);
+        layer[20] = new RockTile(-4,4);
+        layer[21] = new LibraryTile(-3, 4);
+        layer[22] = new Tile(-2,4);
+        layer[23] = new Tile(-1,4);
+        for(Tile t: layer) {
+            tiles.add(t);
+        }
+        layer = new Tile[30];
+        layer[0] = new LavaTile(0,5);
+        layer[1] = new RockTile(1,4);
+        layer[2] = new AcidTile(2,3);
+        layer[3] = new RockTile(3,2);
+        layer[4] = new RockTile(4, 1);
+        layer[5] = new LavaTile(5, 0);
+        layer[6] = new RockTile(5,-1);
+        layer[7] = new RockTile(5,-2);
+        layer[8] = new RockTile(5,-3);
+        layer[9] = new RockTile(5,-4);
+        layer[10] = new LavaTile(5,-5);
+        layer[11] = new RockTile(4,-5);
+        layer[12] = new RockTile(3,-5);
+        layer[13] = new RockTile(2,-5);
+        layer[14] = new RockTile(1,-5);
+        layer[15] = new LavaTile(0, -5);
+        layer[16] = new RockTile(-1,-4);
+        layer[17] = new RockTile(-2,-3);
+        layer[18] = new AcidTile(-3,-2);
+        layer[19] = new RockTile(-4, -1);
+        layer[20] = new LavaTile(-5, 0);
+        layer[21] = new RockTile(-5,1);
+        layer[22] = new RockTile(-5,2);
+        layer[23] = new RockTile(-5, 3);
+        layer[24] = new RockTile(-5,4);
+        layer[25] = new LavaTile(-5, 5);
+        layer[26] = new RockTile(-4, 5);
+        layer[27] = new RockTile(-3,5);
+        layer[28] = new RockTile(-2,5);
+        layer[29] = new RockTile(-1,5);
+        for(Tile t: layer) {
+            tiles.add(t);
+        }
+        layer = new Tile[18];
+        layer[0] = new LavaTile(1,5);
+        layer[1] = new LavaTile(2,4);
+        layer[2] = new LavaTile(3,3);
+        layer[3] = new LavaTile(4,2);
+        layer[4] = new LavaTile(5, 1);
+        layer[5] = new LavaTile(5,-6);
+        layer[6] = new LavaTile(4,-6);
+        layer[7] = new LavaTile(3,-6);
+        layer[8] = new LavaTile(2,-6);
+        layer[9] = new LavaTile(-2,-4);
+        layer[10] = new LavaTile(-3, -3);
+        layer[11] = new LavaTile(-4, -2);
+        layer[12] = new LavaTile(-5,-1);
+        layer[13] = new LavaTile(6,-5);
+        layer[14] = new LavaTile(6,-4);
+        layer[15] = new LavaTile(6, -3);
+        layer[16] = new LavaTile(6,-2);
+        layer[17] = new LavaTile(6,-1);
+        for(Tile t: layer) {
+            tiles.add(t);
+        }
+        layer = new Tile[10];
+        layer[0] = new LavaTile(3,4);
+        layer[1] = new LavaTile(4,4);
+        layer[2] = new LavaTile(5,3);
+        layer[3] = new LavaTile(5,-7);
+        layer[4] = new LavaTile(4,-7);
+        layer[5] = new LavaTile(-5,-2);
+        layer[6] = new LavaTile(-4,-3);
+        layer[7] = new LavaTile(-3,7);
+        layer[8] = new LavaTile(-4,7);
+        layer[9] = new LavaTile(-5,7);
+        for(Tile t: layer) {
+            tiles.add(t);
+        }
     }
 
 }

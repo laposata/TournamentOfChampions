@@ -13,13 +13,14 @@ import org.w3c.dom.Text;
 import java.awt.font.TextAttribute;
 
 public class QueueScreen extends AppCompatActivity {
-
+    public static final String ROLE = "com.example.tournamentofchampions.ROLE";
+    String role;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_queue_screen);
         Intent intent = getIntent();
-        String role = intent.getStringExtra(IntroScreen.ROLE);
+        role = intent.getStringExtra(IntroScreen.ROLE);
         int roleIm = intent.getIntExtra(IntroScreen.ROLE_IMAGE, 0);
         ImageView disp = findViewById(R.id.lockedRoleDisp);
         disp.setImageResource(roleIm);
@@ -28,6 +29,7 @@ public class QueueScreen extends AppCompatActivity {
     }
     public void begin(View view) {
         Intent intent = new Intent(this, Board.class);
+        intent.putExtra(ROLE, role);
         startActivity(intent);
     }
 }
