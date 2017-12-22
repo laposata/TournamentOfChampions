@@ -20,7 +20,7 @@ public class Board extends AppCompatActivity {
         setContentView(R.layout.activity_board);
         ImageView iv = findViewById(R.id.mapView);
         champions = new Champion[2];
-        this.map = new Map(champions);
+        this.map = new Map(champions, this.getDrawable(R.drawable.map).getIntrinsicHeight());
         champions[0] = new Monk(map.tiles.get(2));
         champions[1] = new Warlock(map.tiles.get(3));
         System.out.println("Draw map");

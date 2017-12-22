@@ -12,20 +12,22 @@ import java.util.ArrayList;
  */
 
 public class Tile {
-    public static final int RADIUS = 30;
+    int pxRadius = 30;
     int x;
     int y;
     int z;
+
     public ArrayList<Champion> onTile;
-    public Tile(int x, int y, int z) {
+    public Tile(int x, int y, int z, int radius) {
         this.x = x;
         this.y = y;
         this.z = z;
         onTile = new ArrayList<Champion>();
+        this.pxRadius = radius;
 
     }
-    public Tile(int x, int y) {
-        this(x, y, -(x + y));
+    public Tile(int x, int y, int radius) {
+        this(x, y, -(x + y), radius);
     }
 
     /**
@@ -78,8 +80,8 @@ public class Tile {
      * @return int[2] {x, y}
      */
     public int[] getTrueCoords(){
-        int yCoord = RADIUS * 2 * y + RADIUS * x + RADIUS * Map.MAP_HEIGHT;
-        int xCoord = RADIUS * 2 * x + RADIUS * (y + z) + RADIUS * Map.MAP_WIDTH;
+        int yCoord =(int)(-(pxRadius * 2 * y + pxRadius * x) + pxRadius * Map.MAP_HEIGHT * 2);
+        int xCoord = (int)(pxRadius * 2 * x + pxRadius * (y + z) + pxRadius * Map.MAP_WIDTH * 2);
         return new int[]{xCoord, yCoord};
     }
 
@@ -87,20 +89,20 @@ public class Tile {
      * returns the x, y coordinates of all corners of the tile with the tiles center at {0,0}.
      * @return float[2][6] {ne, nw, e, se, sw, w}
      */
-    public static float[][] getCorners() {
+    public float[][] getCorners() {
         //corners ne, nw, e, se, sw, w
         float[][] corners = new float[2][6];
-        corners[0][0] = - (float)(RADIUS / (Math.tan(Math.PI/6.0)));
-        corners[1][0] = (float)(RADIUS * (Math.cos(Math.PI/6.0)));
-        corners[0][1] = (float)(RADIUS / (Math.tan(Math.PI/6.0)));
-        corners[1][1] = (float)(RADIUS * (Math.cos(Math.PI/6.0)));
-        corners[0][2] = RADIUS;
+        corners[0][0] = - (float)(pxRadius / (Math.tan(Math.PI/6.0)));
+        corners[1][0] = (float)(pxRadius * (Math.cos(Math.PI/6.0)));
+        corners[0][1] = (float)(pxRadius / (Math.tan(Math.PI/6.0)));
+        corners[1][1] = (float)(pxRadius * (Math.cos(Math.PI/6.0)));
+        corners[0][2] = pxRadius;
         corners[1][2] = 0;
-        corners[0][3] = (float)(RADIUS / (Math.tan(Math.PI/6.0)));
-        corners[1][3] = - (float)(RADIUS * (Math.cos(Math.PI/6.0)));
-        corners[0][4] = - (float)(RADIUS / (Math.tan(Math.PI/6.0)));
-        corners[1][4] = - (float)(RADIUS * (Math.cos(Math.PI/6.0)));
-        corners[0][5] = - RADIUS;
+        corners[0][3] = (float)(pxRadius / (Math.tan(Math.PI/6.0)));
+        corners[1][3] = - (float)(pxRadius * (Math.cos(Math.PI/6.0)));
+        corners[0][4] = - (float)(pxRadius / (Math.tan(Math.PI/6.0)));
+        corners[1][4] = - (float)(pxRadius * (Math.cos(Math.PI/6.0)));
+        corners[0][5] = - pxRadius;
         corners[1][5] = 0;
         return corners;
     }
