@@ -1,4 +1,4 @@
-package com.example.michaellaposata.tournamentofchampions;
+package com.example.michaellaposata.tournamentofchampions.Potions;
 
 /**
  * Created by michaellaposata on 12/17/17.

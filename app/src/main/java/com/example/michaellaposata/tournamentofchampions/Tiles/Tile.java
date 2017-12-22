@@ -1,14 +1,9 @@
-package com.example.michaellaposata.tournamentofchampions;
+package com.example.michaellaposata.tournamentofchampions.Tiles;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Path;
 
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-
+import com.example.michaellaposata.tournamentofchampions.Champions.Champion;
+import com.example.michaellaposata.tournamentofchampions.Map;
+import com.example.michaellaposata.tournamentofchampions.Modifiers.Modifier;
 
 import java.util.ArrayList;
 
@@ -17,33 +12,65 @@ import java.util.ArrayList;
  */
 
 public class Tile {
-    static final int RADIUS = 30;
-    //orientation {N, NE, SE, S, SW, NW}
+    public static final int RADIUS = 30;
     int x;
     int y;
     int z;
-    ArrayList<Champion> onTile;
-    Tile(int x, int y, int z) {
+    public ArrayList<Champion> onTile;
+    public Tile(int x, int y, int z) {
         this.x = x;
         this.y = y;
         this.z = z;
         onTile = new ArrayList<Champion>();
 
     }
-    Tile(int x, int y) {
+    public Tile(int x, int y) {
         this(x, y, -(x + y));
     }
 
+    /**
+     * calculates if the player is in range of their target
+     * @param t the tile being targeted
+     * @param dist the range of the action
+     * @return boolean
+     */
     public boolean inRange(Tile t, int dist) {
         int sum = Math.abs(t.x - this.x) + Math.abs(t.y - this.y) + Math.abs(t.z - this.z);
         return sum <= dist;
+
     }
 
+    /**
+     * returns if the player can spawn on this tile
+     * @return false
+     */
     public boolean spawnable() {
         return false;
     }
+
+    /**
+     * returns the modifier type that the tile applies.
+     * this tile applies none
+     * @return null
+     */
     public Modifier getSpecial() {
         return null;
+    }
+
+    /**
+     * Adds the champion to onTile
+     * @param c the champion to be added to the list
+     */
+    public void addChamp(Champion c){
+        onTile.add(c);
+    }
+
+    /**
+     * removes the champion from onTile
+     * @param c the champion to be removed
+     */
+    public void removeChamp(Champion c) {
+        onTile.remove(c);
     }
 
     /**
@@ -77,5 +104,6 @@ public class Tile {
         corners[1][5] = 0;
         return corners;
     }
+
 
 }

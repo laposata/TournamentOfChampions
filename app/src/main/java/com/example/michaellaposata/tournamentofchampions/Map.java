@@ -3,7 +3,22 @@ package com.example.michaellaposata.tournamentofchampions;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+
+import com.example.michaellaposata.tournamentofchampions.Champions.Champion;
+import com.example.michaellaposata.tournamentofchampions.Tiles.AcidTile;
+import com.example.michaellaposata.tournamentofchampions.Tiles.ArmoryTile;
+import com.example.michaellaposata.tournamentofchampions.Tiles.ChurchTile;
+import com.example.michaellaposata.tournamentofchampions.Tiles.DojoTile;
+import com.example.michaellaposata.tournamentofchampions.Tiles.HillTile;
+import com.example.michaellaposata.tournamentofchampions.Tiles.LavaTile;
+import com.example.michaellaposata.tournamentofchampions.Tiles.LibraryTile;
+import com.example.michaellaposata.tournamentofchampions.Tiles.PotionShopTile;
+import com.example.michaellaposata.tournamentofchampions.Tiles.RockTile;
+import com.example.michaellaposata.tournamentofchampions.Tiles.SpawnTile;
+import com.example.michaellaposata.tournamentofchampions.Tiles.Tile;
+import com.example.michaellaposata.tournamentofchampions.Tiles.WellTile;
 
 import java.util.ArrayList;
 
@@ -13,11 +28,13 @@ import java.util.ArrayList;
  */
 
 public class Map {
-    static final int MAP_WIDTH = 10;
-    static final int MAP_HEIGHT = 10;
+    public static final int MAP_WIDTH = 10;
+    public static final int MAP_HEIGHT = 10;
     Tile center;
     ArrayList<Tile> tiles;
-    Map(){
+    Champion[] champions;
+    Map(Champion[] champions){
+        this.champions = champions;
         generateMap();
     }
     public void generateMap(){
@@ -171,5 +188,19 @@ public class Map {
             tiles.add(t);
         }
     }
-
+    public Bitmap drawMap(Context c, ImageView iv) {
+        Drawable map = c.getDrawable(R.drawable.map);
+        map.setBounds(0,0, map.getIntrinsicWidth(), map.getIntrinsicHeight());
+        Bitmap base = Bitmap.createBitmap(map.getIntrinsicWidth(),
+                map.getIntrinsicHeight(),
+                Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(base);
+        map.draw(canvas);
+        for (Champion champ : this.champions) {
+            Drawable im = champ.getImage(c, iv);
+            im.draw(canvas);
+        }
+        System.out.println("TFS");
+        return base;
+    }
 }
