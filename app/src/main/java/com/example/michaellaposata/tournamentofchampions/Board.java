@@ -20,11 +20,14 @@ public class Board extends AppCompatActivity {
         setContentView(R.layout.activity_board);
         ImageView iv = findViewById(R.id.mapView);
         champions = new Champion[2];
-        this.map = new Map(champions, this.getDrawable(R.drawable.map).getIntrinsicHeight());
+
+        this.map = new Map(champions);
         champions[0] = new Monk(map.tiles.get(2));
         champions[1] = new Warlock(map.tiles.get(3));
-        System.out.println("Draw map");
-        iv.setImageBitmap(map.drawMap(this, iv));
+        System.out.println("Draw ma");
+        Bitmap b = map.drawBaseMap(this);
+        map.addTileSize((int)(b.getWidth()/ (Map.MAP_WIDTH * 2)));
+        iv.setImageBitmap(map.drawMap(this, iv, b));
         //iv.setImageDrawable(this.getDrawable(R.drawable.map));
 
 

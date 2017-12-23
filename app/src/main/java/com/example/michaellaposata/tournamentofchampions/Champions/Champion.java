@@ -41,13 +41,13 @@ public abstract class Champion {
 
     }
     public abstract Drawable getImage(Context c, ImageView iv);
-    protected void calcBounds(Drawable dr, ImageView iv) {
+    protected void calcBounds(Drawable dr) {
         int[] coords = this.tile.getTrueCoords();
         int width = dr.getIntrinsicWidth();
         int height = dr.getIntrinsicHeight();
-        dr.setBounds((coords[0] - width / 2),  (coords[1] - height / 2),
-                (coords[0] + width / 2),
-                (coords[1] + height / 2));
+        dr.setBounds((coords[0] - width / 4),  (coords[1] - height / 4),
+                (coords[0] + width / 4),
+                (coords[1] + height / 4));
     }
     public boolean action(int cost) {
         if(mana > cost) {
@@ -67,5 +67,5 @@ public abstract class Champion {
     public Tile getTile() {
         return this.tile;
     }
-
+    public void setTile(Tile t) { this.tile = t; }
 }

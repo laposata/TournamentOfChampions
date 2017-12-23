@@ -8,8 +8,8 @@ import com.example.michaellaposata.tournamentofchampions.Modifiers.HillModifier;
  */
 
 public class HillTile extends Tile {
-    public HillTile(int x, int y, int radius) {
-        super(x, y, radius);
+    public HillTile(int x, int y) {
+        super(x, y);
     }
     public Modifier getSpecial() {
         return new HillModifier();

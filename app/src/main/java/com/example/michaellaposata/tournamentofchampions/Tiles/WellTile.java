@@ -9,8 +9,8 @@ import com.example.michaellaposata.tournamentofchampions.Modifiers.WellModifier;
  */
 
 public class WellTile extends Tile {
-    public WellTile(int x, int y, int radius) {
-        super(x, y, radius);
+    public WellTile(int x, int y) {
+        super(x, y);
     }
     public Modifier getSpecial() {
         return new WellModifier();

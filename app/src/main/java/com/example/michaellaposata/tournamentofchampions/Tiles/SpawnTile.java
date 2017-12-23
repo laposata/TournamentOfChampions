@@ -5,8 +5,8 @@ package com.example.michaellaposata.tournamentofchampions.Tiles;
  */
 
 public class SpawnTile extends Tile {
-    public SpawnTile(int x, int y, int radius) {
-        super(x, y, radius);
+    public SpawnTile(int x, int y) {
+        super(x, y);
     }
     public boolean spawnable() {
         return true;

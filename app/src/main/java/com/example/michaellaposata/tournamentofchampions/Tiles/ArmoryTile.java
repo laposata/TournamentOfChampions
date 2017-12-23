@@ -5,7 +5,7 @@ package com.example.michaellaposata.tournamentofchampions.Tiles;
  */
 
 public class ArmoryTile extends Tile {
-    public ArmoryTile(int x, int y, int radius) {
-        super(x, y, radius);
+    public ArmoryTile(int x, int y) {
+        super(x, y);
     }
 }

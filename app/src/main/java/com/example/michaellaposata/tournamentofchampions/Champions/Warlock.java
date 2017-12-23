@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
-import com.example.michaellaposata.tournamentofchampions.Champions.Champion;
 import com.example.michaellaposata.tournamentofchampions.R;
 import com.example.michaellaposata.tournamentofchampions.Tiles.Tile;
 
@@ -20,7 +19,7 @@ public class Warlock extends Champion {
     @Override
     public Drawable getImage(Context c, ImageView iv) {
         Drawable dr = c.getDrawable(R.drawable.warlock);
-        this.calcBounds(dr, iv);
+        this.calcBounds(dr);
         return dr;
     }
 }

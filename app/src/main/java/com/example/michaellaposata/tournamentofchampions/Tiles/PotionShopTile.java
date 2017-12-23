@@ -6,7 +6,7 @@ package com.example.michaellaposata.tournamentofchampions.Tiles;
  */
 
 public class PotionShopTile extends Tile {
-    public PotionShopTile(int x, int y, int radius) {
-        super(x, y, radius);
+    public PotionShopTile(int x, int y) {
+        super(x, y);
     }
 }

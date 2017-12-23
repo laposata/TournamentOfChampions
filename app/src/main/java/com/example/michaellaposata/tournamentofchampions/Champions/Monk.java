@@ -21,7 +21,7 @@ public class Monk extends Champion {
     @Override
     public Drawable getImage(Context c, ImageView iv) {
         Drawable dr = c.getDrawable(R.drawable.monk);
-        this.calcBounds(dr, iv);
+        this.calcBounds(dr);
         return dr;
     }
 }

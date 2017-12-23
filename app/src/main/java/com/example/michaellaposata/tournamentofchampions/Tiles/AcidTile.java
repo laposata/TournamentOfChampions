@@ -5,7 +5,7 @@ package com.example.michaellaposata.tournamentofchampions.Tiles;
  */
 
 public class AcidTile extends Tile {
-    public AcidTile(int x, int y, int radius) {
-        super(x, y, radius);
+    public AcidTile(int x, int y) {
+        super(x, y);
     }
 }

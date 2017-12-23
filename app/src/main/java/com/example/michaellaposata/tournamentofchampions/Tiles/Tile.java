@@ -29,6 +29,7 @@ public class Tile {
     public Tile(int x, int y, int radius) {
         this(x, y, -(x + y), radius);
     }
+    public Tile(int x, int y) {this(x, y, -(x + y), 0);}
 
     /**
      * calculates if the player is in range of their target
@@ -80,8 +81,9 @@ public class Tile {
      * @return int[2] {x, y}
      */
     public int[] getTrueCoords(){
-        int yCoord =(int)(-(pxRadius * 2 * y + pxRadius * x) + pxRadius * Map.MAP_HEIGHT * 2);
-        int xCoord = (int)(pxRadius * 2 * x + pxRadius * (y + z) + pxRadius * Map.MAP_WIDTH * 2);
+        double height = (pxRadius * (Math.cos(Math.PI/6.0)));
+        int yCoord =(int)(-(height * y * 2 + height * x ) + height * (Map.MAP_HEIGHT + 1));
+        int xCoord = (int)(pxRadius * x * 3/2 + pxRadius * Map.MAP_WIDTH);
         return new int[]{xCoord, yCoord};
     }
 
@@ -106,6 +108,8 @@ public class Tile {
         corners[1][5] = 0;
         return corners;
     }
-
+    public void setPxRadius(int pxRadius) {
+        this.pxRadius = pxRadius;
+    }
 
 }
