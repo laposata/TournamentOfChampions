@@ -43,6 +43,7 @@ public class Map {
         tiles = new ArrayList<Tile>();
         center = new WellTile(0,0);
         tiles.add(center);
+        Tile[] layer;
         Tile[] spawns = new Tile[6];
         spawns[0] = new SpawnTile(1,0);
         spawns[1] = new SpawnTile(1,-1);
@@ -53,7 +54,7 @@ public class Map {
         for(Tile t: spawns){
             tiles.add(t);
         }
-        Tile[] layer = new Tile[12];
+        layer = new Tile[12];
         layer[0] = new Tile(0,2);
         layer[1] = new Tile(1,1);
         layer[2] = new Tile(2,0);
@@ -167,18 +168,19 @@ public class Map {
         layer[10] = new LavaTile(-3, -3);
         layer[11] = new LavaTile(-4, -2);
         layer[12] = new LavaTile(-5,-1);
-        layer[13] = new LavaTile(6,-5);
-        layer[14] = new LavaTile(6,-4);
-        layer[15] = new LavaTile(6, -3);
-        layer[16] = new LavaTile(6,-2);
-        layer[17] = new LavaTile(6,-1);
+
+        layer[13] = new LavaTile(-5,6);
+        layer[14] = new LavaTile(-4,6);
+        layer[15] = new LavaTile(-3,6);
+        layer[16] = new LavaTile(-2,6);
+        layer[17] = new LavaTile(-1,6);
         for(Tile t: layer) {
-            tiles.add(t);
+           tiles.add(t);
         }
         layer = new Tile[10];
         layer[0] = new LavaTile(3,4);
-        layer[1] = new LavaTile(4,4);
-        layer[2] = new LavaTile(5,3);
+        layer[1] = new LavaTile(4,3);
+        layer[2] = new LavaTile(5,2);
         layer[3] = new LavaTile(5,-7);
         layer[4] = new LavaTile(4,-7);
         layer[5] = new LavaTile(-5,-2);
@@ -189,6 +191,8 @@ public class Map {
         for(Tile t: layer) {
             tiles.add(t);
         }
+        tiles.add(new LavaTile(5,3));
+        tiles.add(new LavaTile(-5,8));
     }
     public Bitmap drawBaseMap(Context c) {
         Drawable map = c.getDrawable(R.drawable.map);
