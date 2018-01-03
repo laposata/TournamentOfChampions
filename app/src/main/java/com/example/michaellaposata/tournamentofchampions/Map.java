@@ -3,11 +3,11 @@ package com.example.michaellaposata.tournamentofchampions;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 import com.example.michaellaposata.tournamentofchampions.Champions.Champion;
+import com.example.michaellaposata.tournamentofchampions.Champions.Warlock;
 import com.example.michaellaposata.tournamentofchampions.Tiles.AcidTile;
 import com.example.michaellaposata.tournamentofchampions.Tiles.ArmoryTile;
 import com.example.michaellaposata.tournamentofchampions.Tiles.ChurchTile;
@@ -34,6 +34,8 @@ public class Map {
     Tile center;
     ArrayList<Tile> tiles;
     Champion[] champions;
+    int imageWidth;
+    int imageHeight;
     Map(Champion[] champions){
         this.champions = champions;
         generateMap();
@@ -53,6 +55,7 @@ public class Map {
         spawns[5] = new SpawnTile(0,1);
         for(Tile t: spawns){
             tiles.add(t);
+
         }
         layer = new Tile[12];
         layer[0] = new Tile(0,2);
@@ -207,25 +210,52 @@ public class Map {
 
     public Bitmap drawMap(Context c, ImageView iv, Bitmap map) {
         Canvas canvas = new Canvas(map);
-//        for (Champion champ : this.champions) {
-//            Drawable im = champ.getImage(c, iv);
-//            im.draw(canvas);
-//
-//        }
-        int[] coords;
-        Paint p = new Paint();
-        p.setARGB(1,255,0,0);
-        for(Tile t : tiles) {
-            this.champions[0].setTile(t);
-            this.champions[0].getImage(c, iv).draw(canvas);
+        Drawable im;
+        for (Champion champ : this.champions) {
+            if(champ.isAlive()) {
+                im = champ.getImage(c, iv);
+                im.draw(canvas);
+            }
 
         }
+
         return map;
     }
-    public void addTileSize(int tileSize) {
+    public void addTileSize(int tileSize, int tchSize) {
         System.out.println(tileSize);
         for(Tile t: tiles) {
             t.setPxRadius(tileSize);
+            t.setTchRadius(tchSize);
+            if(t.spawnable()) {
+                int[] coords = t.getTchCoords();
+                System.out.println("Spawn:x " + coords[0] + " y " + coords[1]);
+            }
         }
+        imageHeight = (int)(tiles.get(0).lesserRadiusTch() * MAP_HEIGHT * 2);
+        imageWidth = (int)(tchSize * Map.MAP_WIDTH * 2);
+        System.out.println("actual: " + imageHeight + " " + imageWidth);
+
+    }
+
+    /**
+     * finds which tile contains the point, returns null if none
+     * @param x x coord of the point
+     * @param y y coord of the point
+     * @return the tile that contains the point, null if none
+     */
+    public Tile findTileByPoint(int x, int y) {
+        for(Tile t: tiles) {
+            if(t.inTile(x,y)){
+                return t;
+            }
+        }
+        return null;
+    }
+
+    public int getImageWidth() {
+        return imageWidth;
+    }
+    public int getImageHeight() {
+        return imageHeight;
     }
 }

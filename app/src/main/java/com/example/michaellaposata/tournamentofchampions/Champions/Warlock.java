@@ -15,6 +15,9 @@ public class Warlock extends Champion {
     public Warlock(Tile tile) {
         super(tile);
     }
+    public Warlock() {
+        super();
+    }
 
     @Override
     public Drawable getImage(Context c, ImageView iv) {

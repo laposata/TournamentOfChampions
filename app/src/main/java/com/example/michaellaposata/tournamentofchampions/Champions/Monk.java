@@ -17,6 +17,11 @@ public class Monk extends Champion {
         this.maxMana = 4;
         this.mana = 4;
     }
+    public Monk() {
+        super();
+        this.maxMana = 4;
+        this.mana = 4;
+    }
 
     @Override
     public Drawable getImage(Context c, ImageView iv) {

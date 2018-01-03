@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class Tile {
     int pxRadius = 30;
+    int tchRadius;
     int x;
     int y;
     int z;
@@ -77,39 +78,73 @@ public class Tile {
     }
 
     /**
-     * returns the absolute x,y coordinates of the center of the tile
+     * returns the absolute x,y coordinates of the center of the tile for drawing
      * @return int[2] {x, y}
      */
-    public int[] getTrueCoords(){
-        double height = (pxRadius * (Math.cos(Math.PI/6.0)));
+    public int[] getPxCoords(){
+        double height = lesserRadiusPx();
         int yCoord =(int)(-(height * y * 2 + height * x ) + height * (Map.MAP_HEIGHT + 1));
         int xCoord = (int)(pxRadius * x * 3/2 + pxRadius * Map.MAP_WIDTH);
         return new int[]{xCoord, yCoord};
     }
 
     /**
-     * returns the x, y coordinates of all corners of the tile with the tiles center at {0,0}.
-     * @return float[2][6] {ne, nw, e, se, sw, w}
+     * returns the absolute x,y coordinates of the center of the tile for touch
+     * @return int[2] {x, y}
      */
-    public float[][] getCorners() {
-        //corners ne, nw, e, se, sw, w
-        float[][] corners = new float[2][6];
-        corners[0][0] = - (float)(pxRadius / (Math.tan(Math.PI/6.0)));
-        corners[1][0] = (float)(pxRadius * (Math.cos(Math.PI/6.0)));
-        corners[0][1] = (float)(pxRadius / (Math.tan(Math.PI/6.0)));
-        corners[1][1] = (float)(pxRadius * (Math.cos(Math.PI/6.0)));
-        corners[0][2] = pxRadius;
-        corners[1][2] = 0;
-        corners[0][3] = (float)(pxRadius / (Math.tan(Math.PI/6.0)));
-        corners[1][3] = - (float)(pxRadius * (Math.cos(Math.PI/6.0)));
-        corners[0][4] = - (float)(pxRadius / (Math.tan(Math.PI/6.0)));
-        corners[1][4] = - (float)(pxRadius * (Math.cos(Math.PI/6.0)));
-        corners[0][5] = - pxRadius;
-        corners[1][5] = 0;
-        return corners;
+    public int[] getTchCoords(){
+        double height = lesserRadiusTch();
+        int yCoord =(int)(-(height * y * 2 + height * x ) + height * (Map.MAP_HEIGHT + 1));
+        int xCoord = (int)(tchRadius * x * 3/2 + tchRadius * Map.MAP_WIDTH);
+        return new int[]{xCoord, yCoord};
     }
+
+    /***
+     * returns the distance between the center and half way to a side for drawing
+     * @return the lesser radius of the hex
+     */
+    public double lesserRadiusPx() {
+        return (pxRadius * (Math.cos(Math.PI/6.0)));
+    }
+
+    /***
+     * returns the distance between the center and half way to a side for touch
+     * @return the lesser radius of the hex for touch
+     */
+    public double lesserRadiusTch() {
+        return (tchRadius * (Math.cos(Math.PI/6.0)));
+    }
+    /**
+     * outputs if the point is inside a circle with the lesser radius of the hex
+     * @param x x coord of the point
+     * @param y y coord of the point
+     * @return if the point is in the circle
+     */
+    public boolean inTile(int x, int y) {
+        int[] coords = this.getTchCoords();
+        return Math.pow(x - coords[0], 2) + Math.pow(y - coords[1], 2)
+                <= Math.pow(lesserRadiusTch(), 2);
+    }
+
+    /**
+     * sets this.pxRadius to the input
+     * @param pxRadius the new pxRadius
+     */
     public void setPxRadius(int pxRadius) {
         this.pxRadius = pxRadius;
+    }
+
+    /**
+     * sets this.tchRadius to the input
+     * @param tchRadius the new tchRadius
+     */
+    public void setTchRadius(int tchRadius) {
+        this.tchRadius = tchRadius;
+    }
+    public String toString(){
+        int[] tchCoords = this.getTchCoords();
+        return "x: "+ this.x + " y: " + this.y+ " z: " + this.z+ "\n"
+                +"tchX: " + tchCoords[0] +" tchY: " +tchCoords[1];
     }
 
 }
